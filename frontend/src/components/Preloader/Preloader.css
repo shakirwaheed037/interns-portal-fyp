@@ -1,0 +1,115 @@
+.preloader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.spinner-wrapper {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.main-spinner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid #f3f4f6;
+    border-top: 4px solid #f26522;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.inner-spinner {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    border: 4px solid #f3f4f6;
+    border-bottom: 4px solid #6366f1;
+    border-radius: 50%;
+    animation: spin-reverse 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+.loading-text {
+    display: flex;
+    gap: 0.2rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #1e293b;
+    letter-spacing: 0.1em;
+}
+
+.char {
+    display: inline-block;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+.char:nth-child(1) { animation-delay: 0s; }
+.char:nth-child(2) { animation-delay: 0.1s; }
+.char:nth-child(3) { animation-delay: 0.2s; }
+.char:nth-child(4) { animation-delay: 0.3s; }
+.char:nth-child(5) { animation-delay: 0.4s; }
+.char:nth-child(6) { animation-delay: 0.5s; }
+.char:nth-child(7) { animation-delay: 0.6s; }
+.char:nth-child(8) { animation-delay: 0.7s; }
+.char:nth-child(9) { animation-delay: 0.8s; }
+.char:nth-child(10) { animation-delay: 0.9s; }
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); color: #f26522; }
+}
+
+.loading-bar {
+    width: 200px;
+    height: 4px;
+    background: #f3f4f6;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.loading-progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #f26522, #6366f1);
+    animation: progress 2s ease-in-out infinite;
+}
+
+@keyframes progress {
+    0% { width: 0%; transform: translateX(-100%); }
+    50% { width: 100%; transform: translateX(0); }
+    100% { width: 0%; transform: translateX(100%); }
+}
+
+/* Fade out class */
+.preloader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}

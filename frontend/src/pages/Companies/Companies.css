@@ -1,0 +1,999 @@
+.companies-page-wrapper {
+    background-color: #efebf5;
+    /* Slight grey/purple tint backing like the design */
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    min-height: calc(100vh - 70px);
+    padding: 3rem 2rem;
+    color: #1e293b;
+}
+
+.companies-page-top {
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.title-area h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+.title-area p {
+    color: #64748b;
+    font-size: 1rem;
+}
+
+.btn-add-company {
+    background-color: #5C67FA;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-add-company:hover {
+    background-color: #434ce6;
+}
+
+.companies-filter-bar {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.comp-search-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0 1rem;
+}
+
+.search-icon {
+    color: #94a3b8;
+    margin-right: 0.5rem;
+}
+
+.comp-search-wrapper input {
+    width: 100%;
+    padding: 1rem 0;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    color: #1e293b;
+}
+
+.comp-search-wrapper input::placeholder {
+    color: #94a3b8;
+}
+
+.comp-dropdowns {
+    display: flex;
+    gap: 1rem;
+}
+
+.dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 0 1.25rem;
+    height: 52px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.dropdown-btn.active {
+    background-color: #5C67FA;
+    border-color: #5C67FA;
+    color: #ffffff;
+}
+
+.dropdown-btn:not(.active):hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.custom-dropdown-container {
+    position: relative;
+}
+
+.dropdown-btn .rotate {
+    transform: rotate(180deg);
+}
+
+.dropdown-list-portal {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+    min-width: 240px;
+    z-index: 100;
+    overflow: hidden;
+    animation: dropdownSlide 0.2s ease-out;
+}
+
+@keyframes dropdownSlide {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.dropdown-list-item {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dropdown-list-item:hover {
+    background: #f1f5f9;
+    color: #5C67FA;
+}
+
+.dropdown-list-item.selected {
+    background: #eff6ff;
+    color: #5C67FA;
+    font-weight: 700;
+}
+
+.companies-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.company-grid-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-topline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background-color: var(--accent-color);
+}
+
+.comp-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.comp-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.comp-card-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rating-badge {
+    background-color: #dcfce7;
+    color: #166534;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.company-grid-card h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+.industry-pill {
+    display: inline-block;
+    background-color: #f3e8ff;
+    color: #000000;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.comp-desc {
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+.comp-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.comp-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.comp-stats {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.stat-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.stat-value.highlight {
+    color: #5C67FA;
+}
+
+.btn-view-profile {
+    width: 100%;
+    background-color: #0f172a;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-view-profile:hover {
+    background-color: #1e293b;
+}
+
+.companies-footer {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1.5rem;
+}
+
+.showing-text {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+    .companies-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .companies-page-wrapper {
+        padding: 2rem 1rem;
+    }
+
+    .companies-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .companies-filter-bar {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .comp-search-wrapper {
+        width: 100%;
+    }
+
+    .comp-dropdowns {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        gap: 0.75rem;
+    }
+
+    .custom-dropdown-container {
+        width: 100%;
+    }
+
+    .dropdown-btn {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        justify-content: space-between;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-list-portal {
+        width: 100%;
+    }
+
+    .companies-page-top {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .title-area h1 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .comp-dropdowns {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Modal Styles */
+.company-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.company-modal-content {
+    background: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 16px;
+    padding: 2.5rem;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: #f1f5f9;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #64748b;
+    transition: all 0.2s;
+}
+
+.modal-close-btn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.modal-header-flex {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 1.5rem;
+}
+
+.modal-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.modal-title-info h2 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.modal-industry-tag {
+    background: #5C67FA15;
+    color: #000000;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-left: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+}
+
+.modal-body-section h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #0f172a;
+}
+
+.modal-body-section p {
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.modal-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.modal-internship-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-job-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 1.25rem;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.modal-job-item:hover {
+    transform: translateY(-2px);
+    border-color: #5C67FA;
+}
+
+.modal-job-item h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #0f172a;
+}
+
+.modal-job-item p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.btn-apply-sm {
+    background: #5C67FA;
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.btn-apply-sm:hover {
+    background: #434ce6;
+}
+
+/* ================================= */
+/* MODAL RESPONSIVE DESIGN */
+/* ================================= */
+
+/* Tablet Responsive (768px and below) */
+@media (max-width: 768px) {
+    .company-modal-overlay {
+        padding: 1rem;
+    }
+
+    .company-modal-content {
+        max-width: 90vw;
+        padding: 2rem;
+        border-radius: 12px;
+        max-height: 85vh;
+    }
+
+    .modal-close-btn {
+        top: 1rem;
+        right: 1rem;
+        width: 28px;
+        height: 28px;
+        font-size: 1.25rem;
+    }
+
+    .modal-header-flex {
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .modal-logo {
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+    }
+
+    .modal-title-info h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .modal-industry-tag {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .modal-body-section h4 {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .modal-body-section p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+    }
+
+    .modal-meta-row {
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .modal-internship-list {
+        gap: 0.75rem;
+    }
+
+    .modal-job-item {
+        padding: 1rem;
+        border-radius: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .modal-job-item h5 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .modal-job-item p {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+
+    .btn-apply-sm {
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.85rem;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+/* Mobile Responsive (480px and below) */
+@media (max-width: 480px) {
+    .company-modal-overlay {
+        padding: 0.5rem;
+    }
+
+    .company-modal-content {
+        max-width: 95vw;
+        padding: 1.5rem;
+        border-radius: 12px;
+        max-height: 90vh;
+        margin: 0.5rem;
+    }
+
+    .modal-close-btn {
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 24px;
+        height: 24px;
+        font-size: 1rem;
+    }
+
+    .modal-header-flex {
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .modal-logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+    }
+
+    .modal-title-info h2 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+    }
+
+    .modal-industry-tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+        color: #000000;
+    }
+
+    .modal-body-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .modal-body-section h4 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .modal-body-section p {
+        font-size: 0.8rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+
+    .modal-meta-row {
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .modal-internship-list {
+        gap: 0.5rem;
+    }
+
+    .modal-job-item {
+        padding: 0.75rem;
+        border-radius: 8px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .modal-job-item h5 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+    }
+
+    .modal-job-item p {
+        font-size: 0.75rem;
+        margin-bottom: 0;
+        line-height: 1.4;
+    }
+
+    .btn-apply-sm {
+        width: 100%;
+        padding: 0.625rem 1.25rem;
+        font-size: 0.8rem;
+        text-align: center;
+        justify-content: center;
+        min-height: 44px;
+    }
+}
+
+/* Small Mobile Responsive (380px and below) */
+@media (max-width: 380px) {
+    .company-modal-overlay {
+        padding: 0.25rem;
+    }
+
+    .company-modal-content {
+        max-width: 98vw;
+        padding: 1rem;
+        border-radius: 10px;
+        max-height: 95vh;
+        margin: 0.25rem;
+    }
+
+    .modal-close-btn {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 20px;
+        height: 20px;
+        font-size: 0.875rem;
+    }
+
+    .modal-header-flex {
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .modal-logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
+    }
+
+    .modal-title-info h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+        line-height: 1.2;
+    }
+
+    .modal-industry-tag {
+        font-size: 0.65rem;
+        padding: 0.15rem 0.4rem;
+        color: #000000;
+    }
+
+    .modal-body-section {
+        margin-bottom: 1rem;
+    }
+
+    .modal-body-section h4 {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .modal-body-section p {
+        font-size: 0.75rem;
+        line-height: 1.4;
+        margin-bottom: 0.75rem;
+    }
+
+    .modal-meta-row {
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .modal-internship-list {
+        gap: 0.4rem;
+    }
+
+    .modal-job-item {
+        padding: 0.625rem;
+        border-radius: 6px;
+        gap: 0.4rem;
+    }
+
+    .modal-job-item h5 {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .modal-job-item p {
+        font-size: 0.7rem;
+        line-height: 1.3;
+    }
+
+    .btn-apply-sm {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        min-height: 40px;
+    }
+}
+
+.deadline-badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.deadline-badge.open {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    animation: pulse-green 2s infinite;
+}
+
+.deadline-badge.closed {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    font-weight: 700;
+}
+
+.job-deadline {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.btn-apply-sm.disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+/* Modal Animations and Interactions */
+.company-modal-content {
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Modal Scrollbar Styling */
+.company-modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Company Tags and Verified Badges */
+.company-tags {
+    /* display: flex; */
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+}
+
+.company-type-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.company-type-tag.university {
+    background: linear-gradient(135deg, #a0b5d8 0%, #2563eb 100%);
+    color: #000000;
+}
+
+.company-type-tag.software-house {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #000000;
+}
+
+.company-type-tag.corporate {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: #000000;
+}
+
+.verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #000000 !important;
+    border-radius: 99px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+/* Company Card Header Adjustments */
+.company-grid-card h2 {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Modal Header Adjustments */
+.modal-title-info h2 {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.company-modal-content::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.company-modal-content::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.company-modal-content::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
