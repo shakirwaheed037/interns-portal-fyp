@@ -6,10 +6,10 @@ This project is part of a Final Year Project (FYP) and follows a real-world SDLC
 ---
 
 ## 🌐 Live Demo (Frontend)
-https://your-vercel-link.vercel.app
+
 
 ## 🛠 Backend API
-https://your-render-backend.onrender.com
+
 
 
 # 📌 Features
